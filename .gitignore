@@ -1,0 +1,7 @@
+src/data/
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+.Rhistory
+.RData
