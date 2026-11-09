@@ -57,12 +57,8 @@ def main():
         writer.writerows((row["PassengerId"], prediction)
                          for row, prediction in zip(test, predictions))
     print(f"Wrote {len(predictions)} predictions to {destination.name}.")
-    if "Survived" in test[0] and all(row["Survived"] in {"0", "1"} for row in test):
-        print(f"Provided test accuracy: "
-              f"{model.score(features(test), [int(row['Survived']) for row in test]):.2%}.")
-    else:
-        print("Kaggle test accuracy: upload the predictions to Kaggle for scoring "
-              "against its hidden labels.")
+    print("Test predictions (PassengerId, Survived):")
+    print(destination.read_text(encoding="utf-8"), end="")
 
 
 if __name__ == "__main__":
